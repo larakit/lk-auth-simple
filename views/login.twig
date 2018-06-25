@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+    <!-- title -->
+    <title>Login</title>
+    <meta name="twitter:card" content="summary">
+    <meta property="og:title" content="maximbonus.test"/>
+    <meta name="twitter:title" content="maximbonus.test"/>
+
+    <!-- viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- generator -->
+    <meta name="generator" content="Larakit (https://github.com/larakit)"/>
+
+    <!-- compatible -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <!-- base -->
+    <base href="/"/>
+
+    <!-- favicon -->
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- charset -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <!-- locale -->
+    <meta property="og:locale" content="ru"/>
+
+    <!-- css" -->
+    <link type="text/css" rel="stylesheet" href="/!/dist/apps/login/dev.css?{{ random() }}"/>
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="/"><b>Bunker</b>Media</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Войдите, чтобы начать сеанс</p>
+        <form action="/login" method="post">
+            <div class="form-group has-feedback {% if error %}has-error{% endif %}">
+                <input type="text" class="form-control"
+                       value="{{ login }}"
+                       placeholder="{{ config('auth-simple.login_title', 'Херота') }}"
+                       name="{{ config('auth-simple.login_field', 'email') }}"
+                >
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                {% if error %}
+                    <span id="helpBlock2" class="help-block">{{ error }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group has-feedback {% if error %}has-error{% endif %}">
+                <input type="password" class="form-control" placeholder="Password" name="password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <div class="row">
+                <div class="col-xs-7 col-xs-offset-1">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox" name="remember"> Запомнить меня
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Войти</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        <a href="/lostpass">Я забыл пароль</a><br>
+        <a href="/register" class="text-center">Зарегистрироваться</a>
+
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+    {#<script type="text/javascript" src="/!/dist/apps/login/dev.js?{{ random() }}"></script>#}
+</body>
+</html>
